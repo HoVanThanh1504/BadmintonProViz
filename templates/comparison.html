@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparison Results</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Comparison Results</h1>
+    <div id="plot"></div>
+
+    <script>
+        var plot_div = document.getElementById('plot');
+        plot_div.innerHTML = "{{ plot_html }}";
+    </script>
+</body>
+</html>

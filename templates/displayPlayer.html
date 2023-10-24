@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Badminton Player Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .comparison-form {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 400px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 5px #aaa;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .submit-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .submit-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .submit-buttons button[type="reset"] {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Badminton Player Comparison</h1>
+    <div class="comparison-form">
+        <form action="/compare" method="post">
+            <label for="category">Select a Category:</label>
+            <select name="category" id="category">
+                <option value="MS">Men's Singles</option>
+                <option value="WS">Women's Singles</option>
+            </select>
+            <input type="submit" value="Submit">
+
+            <input list="playersm1" name="player" id="playerm1" {% if men_input_disabled %}disabled{% endif %}>
+            <datalist id="playersm1">
+                {% for player in players %}
+                    <option value={{player}}></option>
+                {% endfor %}
+            </datalist>
+
+            <input list="playersm2" name="player" id="playerm2" {% if men_input_disabled %}disabled{% endif %}>
+            <datalist id="playersm2">
+                {% for player in players %}
+                    <option value={{player}}></option>
+                {% endfor %}
+            </datalist>
+
+            <input list="playersw1" name="player" id="playerw1" {% if women_input_disabled %}disabled{% endif %}>
+            <datalist id="playersw1">
+                {% for player in players %}
+                    <option value={{player}}></option>
+                {% endfor %}
+            </datalist>
+
+            <input list="playersw2" name="player" id="playerw2" {% if women_input_disabled %}disabled{% endif %}>
+            <datalist id="playersw2">
+                {% for player in players %}
+                    <option value={{player}}></option>
+                {% endfor %}
+            </datalist>
+<!--            <label for="player1">Player 1:</label>-->
+<!--            <input type="text" id="player1" name="player1">-->
+
+<!--            <label for="player2">Player 2:</label>-->
+<!--            <input type="text" id="player2" name="player2">-->
+
+            <div class="submit-buttons">
+                <button type="submit">Compare</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -188,7 +188,7 @@
 <body>
     <h1>Badminton Player Comparison</h1>
     <div class="container">
-        <form action="/" method="post" class="form-group">
+        <form action="/type" method="post" class="form-group">
             <label for="category">Select a Category:</label>
             <select name="category" id="category">
                 <option value="MS">Men's Singles</option>
@@ -198,50 +198,6 @@
             <input type="submit" value="Confirm">
         </form>
 
-        <form action="/compare" method="post">
-            <div class="form-group">
-                <label for="playerm1">Men's Singles Player 1:</label>
-                <input list="playersm1" name="player" id="playerm1" {% if men_input_disabled %}disabled{% endif %}>
-                <datalist id="playersm1">
-                    {% for player in players %}
-                    <option value={{player}}></option>
-                    {% endfor %}
-                </datalist>
-            </div>
-
-            <div class="form-group">
-                <label for="playerm2">Men's Singles Player 2:</label>
-                <input list="playersm2" name="player" id="playerm2" {% if men_input_disabled %}disabled{% endif %}>
-                <datalist id="playersm2">
-                    {% for player in players %}
-                    <option value={{player}}></option>
-                    {% endfor %}
-                </datalist>
-            </div>
-
-            <div class="form-group">
-                <label for="playerw1">Women's Singles Player 1:</label>
-                <input list="playersw1" name="player" id="playerw1" {% if women_input_disabled %}disabled{% endif %}>
-                <datalist id="playersw1">
-                    {% for player in players %}
-                    <option value={{player}}></option>
-                    {% endfor %}
-                </datalist>
-            </div>
-
-            <div class="form-group">
-                <label for="playerw2">Women's Singles Player 2:</label>
-                <input list="playersw2" name="player" id="playerw2" {% if women_input_disabled %}disabled{% endif %}>
-                <datalist id="playersw2">
-                    {% for player in players %}
-                    <option value={{player}}></option>
-                    {% endfor %}
-                </datalist>
-            </div>
-            <div class="submit-buttons">
-                <button type="submit" value="Compare">Compare</button>
-            </div>
-        </form>
     </div>
 </body>
 

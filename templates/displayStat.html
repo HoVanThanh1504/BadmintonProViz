@@ -1,63 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        /* Define styles for the tooltip */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 300px;
-            background-color: #f1f1f1;
-            color: #333;
-            text-align: left;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 0;
-            margin-left: 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
+    <title>Comparison Results</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Badminton Match Details</h1>
+    <h1>Comparison Results</h1>
+    <div id="plot"></div>
 
-    <div class="tooltip">
-        Player 1
-        <span class="tooltiptext">
-            <strong>Player 1:</strong> Player Name<br>
-            <strong>Nationality:</strong> Player 1's Nation<br>
-            <strong>Scores:</strong> Set 1 Score - Set 2 Score - Set 3 Score<br>
-            <strong>Longest Point:</strong> Longest Point Value<br>
-            <strong>Match Point:</strong> Match Point Value<br>
-            <strong>Head-to-Head:</strong> Head-to-Head Data
-        </span>
-    </div>
-
-    <br>
-
-    <div class="tooltip">
-        Player 2
-        <span class="tooltiptext">
-            <strong>Player 2:</strong> Player Name<br>
-            <strong>Nationality:</strong> Player 2's Nation<br>
-            <strong>Scores:</strong> Set 1 Score - Set 2 Score - Set 3 Score<br>
-            <strong>Longest Point:</strong> Longest Point Value<br>
-            <strong>Match Point:</strong> Match Point Value<br>
-            <strong>Head-to-Head:</strong> Head-to-Head Data
-        </span>
-    </div>
+    <script>
+        var plot_div = document.getElementById('plot');
+        plot_div.innerHTML = "{{ plot_html }}";
+    </script>
 </body>
 </html>

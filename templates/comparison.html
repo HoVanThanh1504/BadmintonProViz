@@ -1,16 +1,124 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Comparison Results</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
-<body>
-    <h1>Comparison Results</h1>
-    <div id="plot"></div>
 
-    <script>
-        var plot_div = document.getElementById('plot');
-        plot_div.innerHTML = "{{ plot_html }}";
-    </script>
+<head>
+    <title>Badminton Player Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 400px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 5px #aaa;
+        }
+
+        .form-group {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .submit-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .submit-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Badminton Player Comparison</h1>
+    <div class="container">
+        <a3>{{match_type}}</a3>
+
+        <form action="/compare" method="post">
+            <div class="form-group">
+                <label for="playerm1">Men's Singles Player 1:</label>
+                <input list="playersm1" name="playerm1" id="playerm1" {% if men_input_disabled %}disabled{% endif %}>
+                <datalist id="playersm1">
+                    {% for player in men_players %}
+                    <option label={{player}} {% if men_input_disabled %}disabled{% endif %}>{{player}}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+
+            <div class="form-group">
+                <label for="playerm2">Men's Singles Player 2:</label>
+                <input list="playersm2" name="playerm2" id="playerm2" {% if men_input_disabled %}disabled{% endif %}>
+                <datalist id="playersm2">
+                    {% for player in men_players %}
+                    <option label={{player}} {% if men_input_disabled %}disabled{% endif %}>{{player}}</option>
+                    {% endfor %}
+                </datalist>
+
+            </div>
+
+            <div class="form-group">
+                <label for="playerw1">Women's Singles Player 1:</label>
+                <input list="playersw1" name="playerw1" id="playerw1" {% if women_input_disabled %}disabled{% endif %}>
+                <datalist id="playersw1">
+                    {% for player in women_players %}
+                    <option label={{player|safe}} {% if women_input_disabled %}disabled{% endif %}>{{player}}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+
+            <div class="form-group">
+                <label for="playerw2">Women's Singles Player 2:</label>
+                <input list="playersw2" name="playerw2" id="playerw2" {% if women_input_disabled %}disabled{% endif %}>
+                <datalist id="playersw2">
+                    {% for player in women_players %}
+                    <option label={{player|safe}} {% if women_input_disabled %}disabled{% endif %}>{{player}}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+            <div class="submit-buttons">
+                <button type="submit" value="Compare">Compare</button>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>

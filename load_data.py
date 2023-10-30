@@ -1,12 +1,10 @@
 import json
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import plotly.express as px
 
 # Load data from JSON file
-path = './sample_data/tournament_dataset.json'
+path = './tournament_dataset.json'
 with open(path) as json_file:
     data = json.load(json_file)
 
@@ -75,10 +73,12 @@ df_women_singles = df[(df['P1'].str.lower()).isin(list(map(lambda x: x.lower(), 
 
 
 def compare_2_single_players(dataframe, player1, player2):
-    df_2_players = dataframe[(dataframe['P1'].str.lower() == player1.lower()) &
-                             (dataframe['P2'].str.lower() == player2.lower())]
-    year = dataframe.index
-    nation1, nation2 = df_2_players['P1-C'], df_2_players['P2-C']
+    df_2_players = dataframe[((dataframe['P1'].str.lower() == player1.lower()) &
+                             (dataframe['P2'].str.lower() == player2.lower())) |
+                             ((dataframe['P2'].str.lower() == player1.lower()) &
+                             (dataframe['P1'].str.lower() == player2.lower()))]
+    year = df_2_players.index
+    nation1, nation2 = df_2_players[df['P1'] == player1]['P1-C'], df_2_players[df['P2'] == player2]['P2-C']
     player1_h2h, player2_h2h = df_2_players['P1-H2H'], df_2_players['P2-H2H']
     scores = dataframe['P1/T1-S1', 'P2/T2-S1', 'P1/T1-S2', 'P2/T2-S2', 'P1/T1-S3', 'P2/T2-S3']
     longest_point = dataframe['P1/T1-LP', 'P2/T2-LP']

@@ -1,120 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Badminton Player Comparison</title>-->
-<!--    <style>-->
-<!--        body {-->
-<!--            font-family: Arial, sans-serif;-->
-<!--            background-color: #f5f5f5;-->
-<!--            text-align: center;-->
-<!--        }-->
-
-<!--        h1 {-->
-<!--            color: #333;-->
-<!--        }-->
-
-<!--        .comparison-form {-->
-<!--            background-color: #fff;-->
-<!--            border: 1px solid #ccc;-->
-<!--            border-radius: 5px;-->
-<!--            padding: 20px;-->
-<!--            width: 400px;-->
-<!--            margin: 0 auto;-->
-<!--            box-shadow: 0px 0px 5px #aaa;-->
-<!--        }-->
-
-<!--        label {-->
-<!--            display: block;-->
-<!--            text-align: left;-->
-<!--            margin-top: 10px;-->
-<!--            font-weight: bold;-->
-<!--            color: #555;-->
-<!--        }-->
-
-<!--        input[type="text"] {-->
-<!--            width: 100%;-->
-<!--            padding: 10px;-->
-<!--            margin-top: 5px;-->
-<!--            border: 1px solid #ccc;-->
-<!--            border-radius: 3px;-->
-<!--        }-->
-
-<!--        select {-->
-<!--            width: 100%;-->
-<!--            padding: 10px;-->
-<!--            margin-top: 5px;-->
-<!--            border: 1px solid #ccc;-->
-<!--            border-radius: 3px;-->
-<!--        }-->
-
-<!--        .submit-buttons {-->
-<!--            display: flex;-->
-<!--            justify-content: space-between;-->
-<!--            align-items: center;-->
-<!--            margin-top: 20px;-->
-<!--        }-->
-
-<!--        .submit-buttons button {-->
-<!--            background-color: #4CAF50;-->
-<!--            color: white;-->
-<!--            padding: 10px 20px;-->
-<!--            border: none;-->
-<!--            border-radius: 3px;-->
-<!--            cursor: pointer;-->
-<!--        }-->
-
-<!--        .submit-buttons button[type="reset"] {-->
-<!--            background-color: #ccc;-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--&lt;!&ndash;<body>&ndash;&gt;-->
-<!--&lt;!&ndash;    <h1>Badminton Player Comparison</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;    <form action = "/" method="post">&ndash;&gt;-->
-<!--&lt;!&ndash;        <label for="category">Select a Category:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;        <select name="category" id="category">&ndash;&gt;-->
-<!--&lt;!&ndash;            <option value="MS">Men's Singles</option>&ndash;&gt;-->
-<!--&lt;!&ndash;            <option value="WS">Women's Singles</option>&ndash;&gt;-->
-<!--&lt;!&ndash;        </select>&ndash;&gt;-->
-<!--&lt;!&ndash;        <br>&ndash;&gt;-->
-<!--&lt;!&ndash;        <input type="submit" value="Confirm">&ndash;&gt;-->
-<!--&lt;!&ndash;    </form>&ndash;&gt;-->
-<!--&lt;!&ndash;    <br><br>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;    <form action = "/compare" method="post">&ndash;&gt;-->
-<!--&lt;!&ndash;        <input list="playersm1" name="player" id="playerm1" {% if men_input_disabled %}disabled{% endif %}>&ndash;&gt;-->
-<!--&lt;!&ndash;        <datalist id="playersm1">&ndash;&gt;-->
-<!--&lt;!&ndash;            {% for player in players %}&ndash;&gt;-->
-<!--&lt;!&ndash;                <option value={{player}}></option>&ndash;&gt;-->
-<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
-<!--&lt;!&ndash;        </datalist>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <input list="playersm2" name="player" id="playerm2" {% if men_input_disabled %}disabled{% endif %}>&ndash;&gt;-->
-<!--&lt;!&ndash;        <datalist id="playersm2">&ndash;&gt;-->
-<!--&lt;!&ndash;            {% for player in players %}&ndash;&gt;-->
-<!--&lt;!&ndash;                <option value={{player}}></option>&ndash;&gt;-->
-<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
-<!--&lt;!&ndash;        </datalist>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <input list="playersw1" name="player" id="playerw1" {% if women_input_disabled %}disabled{% endif %}>&ndash;&gt;-->
-<!--&lt;!&ndash;        <datalist id="playersw1">&ndash;&gt;-->
-<!--&lt;!&ndash;            {% for player in players %}&ndash;&gt;-->
-<!--&lt;!&ndash;                <option value={{player}}></option>&ndash;&gt;-->
-<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
-<!--&lt;!&ndash;        </datalist>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <input list="playersw2" name="player" id="playerw2" {% if women_input_disabled %}disabled{% endif %}>&ndash;&gt;-->
-<!--&lt;!&ndash;        <datalist id="playersw2">&ndash;&gt;-->
-<!--&lt;!&ndash;            {% for player in players %}&ndash;&gt;-->
-<!--&lt;!&ndash;                <option value={{player}}></option>&ndash;&gt;-->
-<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
-<!--&lt;!&ndash;        </datalist>&ndash;&gt;-->
-<!--&lt;!&ndash;        <input type="submit" value="Submit">&ndash;&gt;-->
-<!--&lt;!&ndash;    </form>&ndash;&gt;-->
-<!--&lt;!&ndash;</body>&ndash;&gt;-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html>
 
@@ -188,16 +71,19 @@
 <body>
     <h1>Badminton Player Comparison</h1>
     <div class="container">
-        <form action="/type" method="post" class="form-group">
-            <label for="category">Select a Category:</label>
-            <select name="category" id="category">
-                <option value="MS">Men's Singles</option>
-                <option value="WS">Women's Singles</option>
-            </select>
+        <form action="/display" method="post" class="form-group">
+            <div class="form-group">
+                <label for="players">Player: </label>
+                <input list="players" name="player" id="player">
+                <datalist id="players">
+                    {% for player in players %}
+                    <option label={{player}}>{{player}}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
             <br>
             <input type="submit" value="Confirm">
         </form>
-
     </div>
 </body>
 

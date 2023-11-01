@@ -5,12 +5,26 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Comparison Results</h1>
-    <div id="plot"></div>
+    <h1>Player Statistic Results</h1>
 
-    <script>
-        var plot_div = document.getElementById('plot');
-        plot_div.innerHTML = "{{ plot_html }}";
-    </script>
+    <div id="winLossPlot">
+        {{ plot_win_loss | safe }}
+    </div>
+
+    <!-- Points Scored -->
+    <div id="pointsScoredPlot">
+        {{ plot_points_scored | safe }}
+    </div>
+
+    <!-- Match Duration -->
+    <div id="matchDurationPlot">
+        {{ plot_match_duration | safe }}
+    </div>
+<!--    <div id="plot"></div>-->
+
+<!--    <script>-->
+<!--        var plot_div = document.getElementById('plot');-->
+<!--        plot_div.innerHTML = "{{ plot_html }}";-->
+<!--    </script>-->
 </body>
 </html>

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import plotly.graph_objects as go
-import plotly.express as px
 from load_data import set_of_players, df, group_player_winratio_by_year, group_player_matchscore_by_year, match_duration_by_year
+import os
 app = Flask(__name__)
 
 
@@ -84,4 +84,5 @@ def display_stats():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Use 5000 as the default port for local development
+    app.run(host='0.0.0.0', port=port)
